@@ -10,7 +10,7 @@
 
   * Description: This eXtension, creates a Context-menu item, that allows you to copy a certain issue that was found during a scan, including its URL tree.
 
-  * Supported AppScan Version: AppScan v7.5 and above.
+  * Supported AppScan® Version: AppScan v7.5 and above.
 
   * Version Notes: none
 
