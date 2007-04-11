@@ -1,0 +1,33 @@
+﻿<?xml version="1.0"?>
+
+<!--
+This product includes software developed by James Landis of Fishnet Security.
+All use and distribution of this software is subject to Version 2.0
+of the Apache License (http://www.apache.org/licenses/LICENSE-2.0).
+
+-->
+<WatchfireExtension>
+
+  <!-- Front End MetaData -->
+  <FullName>CopyToClipboard</FullName>
+  <Description>Creates a Context-menu item, that allows you to copy a certain issue that was
+  found during a scan, including its URL tree.</Description>
+  <Version>1.0</Version>
+  <Author>James Landis, Fishnet Security</Author>
+  <MainDllFile>CopyToClipboard.dll</MainDllFile>
+  <IconFile>CopyToClipboard.png</IconFile>
+  <Copyright>2007 James Landis, Fishnet Security</Copyright>
+
+  <!-- Target Application this extension can install into, 
+       with minimum and maximum supported versions. -->
+  <TargetEdition>
+
+    <!-- supported values: AppScanAuditors, AppScanDev, AppScanQA, AppScanXM, All -->
+    <ID>All</ID>
+
+    <MinCompatibleVersion>7.5</MinCompatibleVersion>
+    <MaxCompatibleVersion>7.9</MaxCompatibleVersion>
+
+  </TargetEdition>
+
+</WatchfireExtension>
