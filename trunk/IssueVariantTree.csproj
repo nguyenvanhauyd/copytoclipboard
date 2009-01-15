@@ -1,0 +1,78 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8CAFCAFA-EEC2-4E7D-8272-A83CB9C2E4DF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IssueVariantTree</RootNamespace>
+    <AssemblyName>CopyToClipboard</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AppScanSDK, Version=7.5.124.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\IBM\Rational AppScan\AppScanSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ContextMenu.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CopyToClipboard.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="info.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LICENSE.txt" />
+    <Content Include="NOTICE.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>md "$(ProjectDir)\bin\$(ConfigurationName)\$(TargetName)"
+copy "$(ProjectDir)\bin\$(ConfigurationName)\$(TargetName).dll" "$(ProjectDir)\bin\$(ConfigurationName)\$(TargetName)\"
+copy "$(ProjectDir)\info.xml" "$(ProjectDir)\bin\$(ConfigurationName)\$(TargetName)\"
+copy "$(ProjectDir)\$(TargetName).png" "$(ProjectDir)\bin\$(ConfigurationName)\$(TargetName)\"
+
+del "$(ProjectDir)bin\$(ConfigurationName)\$(TargetName).zip"
+
+echo "Note: to build this project, you need to have 7-zip installed (http://www.7-zip.org/)"
+"C:\Program Files\7-Zip\7z.exe" a -tzip "$(ProjectDir)bin\$(ConfigurationName)\$(TargetName).zip" -r "$(ProjectDir)bin\$(ConfigurationName)\$(TargetName)"
+
+rmdir /s /q "$(ProjectDir)bin\$(ConfigurationName)\$(TargetName)"
+</PostBuildEvent>
+  </PropertyGroup>
+</Project>
